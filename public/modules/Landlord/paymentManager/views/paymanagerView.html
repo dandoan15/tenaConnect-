@@ -1,0 +1,58 @@
+﻿<div id="tenantList" ng-controller='payCtrl' ng-init='getAll()'>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6"><h1> Paying Info</h1></div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3>Payment Needed</h3>
+            <table id="tenantTbl">
+                <tr><th class="pmRowHeading">Room Number</th><th class="pmRowHeading">Tenant Name</th></tr>
+                <tr ng-repeat="tenant in results | filter:notPaid">
+                    <td class="dataRow"> {{tenant.Room}} </td>
+                    <td class="dataRow querySpecific"><a ng-href="#/paymentInfo/{{tenant.TenantID}}"> {{tenant.FName}} {{tenant.LName}} </a></td>
+                </tr>
+            </table>
+            
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3>Paid</h3>
+            <table id="tenantTbl">
+                <tr><th class="pmRowHeading">Room Number</th><th class="pmRowHeading">Tenant Name</th></tr>
+                <tr ng-repeat="tenant in results | filter:paid">
+                    <td class="dataRow"> {{tenant.Room}} </td>
+                    <td class="dataRow querySpecific"><a ng-href="#/paymentInfo/{{tenant.TenantID}}"> {{tenant.FName}} {{tenant.LName}} </a></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3>Missed Payment</h3>
+            <table id="tenantTbl">
+                <tr><th class="lateRowHeading">Room Number</th><th class="lateRowHeading">Tenant Name</th></tr>
+                <tr ng-repeat="tenant in results | filter:missedPay">
+                    <td class="dataRow"> {{tenant.Room}} </td>
+                    <td class="dataRow querySpecific"><a ng-href="#/paymentInfo/{{tenant.TenantID}}"> {{tenant.FName}} {{tenant.LName}} </a></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

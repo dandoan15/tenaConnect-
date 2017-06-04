@@ -1,0 +1,24 @@
+<div ng-controller="fileUpload" ng-init="getFiles()">
+    <div class="row" ng-repeat="img in check">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <div>
+                <a href="uploads/{{tenantID}}/{{img.fileName}}" id="file">{{img.fileName}}</a>
+            </div>
+        </div>
+        <div class="col-md-6"><button ng-click="deleteFile('{{img.fileName}}')">Delete</button></div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+            <form>
+                <input type="file" ng-model="file1" name="userPhoto" file-model="myFile" />
+                <button ng-click="uploadFile(file1)">upload me</button>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>

@@ -1,0 +1,51 @@
+﻿<div class="container" ng-controller="composeMessage" ng-init="getCategories(); listTenants()">
+    <div class="col-xs-4">
+        <div class="dropdown" dropdown is-open="status.isopen">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" dropdown-toggle ng-disabled="disabled" ng-model="tenantSel">
+                Select Tenant: {{tenantSelection}}
+                <span class="caret">
+                </span>
+            </button>
+
+            <ul class="dropdown-menu">
+                <li ng-repeat="person in tenants"><a ng-click="tenantSelect(person)">{{person.FName}} {{person.LName}}</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" dropdown-toggle ng-disabled="disabled">
+                Select Category: {{categorySelection}}
+                <span class="caret">
+                </span>
+            </button>
+
+            <ul class="dropdown-menu" ng-model="list.Category">
+                <li ng-repeat="type in categories"><a ng-click="categorySelect(type)">{{type.Category}}</a></li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="usr" placeholder="Subject" ng-model="subject">
+        </div>
+
+        <div ng-repeat='date in dates'>
+            <span><strong>Date</strong> : {{date.date1 | dateFormat}} </span>
+            <br>
+            <span><strong>Time</strong> : {{date.date1 | time}} </span>
+        </div>
+
+        <textarea rows="5" cols="50" ng-model="message"></textarea>
+
+        <a ng-href='#/messageBox'>
+            <button type="button" class="btn btn-default pull-left">
+                Back
+            </button>
+        </a>
+
+        <button type="button" class="btn btn-default pull-right" ng-click='sendMessage()'>Send Message</button>
+    </div>
+</div>
+
+
+
+

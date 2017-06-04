@@ -1,0 +1,47 @@
+﻿<div class="container" id="home" ng-controller="bulletinCtrl" ng-init="getMessages()">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><h1> Bulletin Board </h1></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" id='bulletinBoard'>
+            <div ng-repeat="message in bbMessages">
+                <a ng-href='#/bbMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+            </div>
+            <button class="bbAdd"><a ng-href="#/bbCompose">Add Message</a></button>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 button" id=messageBox><a id="messageLink" ng-href="#/messageBox"> Message Box</a></div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 button" id=payment><a id="payLink" ng-href="#/paymentInfo"> Payment</a></div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 button" id=files><a id="fileLink" ng-href="#/files"> File Manager</a></div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 button" id=account><a id="accountLink" ng-href="#/accounts"> Account Manager</a></div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 button" id="directory"><a id="tenantLink" ng-href="#/listTenants"> Tenant Directory </a></div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

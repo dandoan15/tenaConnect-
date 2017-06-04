@@ -1,0 +1,20 @@
+<div ng-controller="fileUpload" ng-init="getFiles()">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h1>Your Files</h1>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div ng-repeat="img in check">
+                <a href="uploads/{{tenantID}}/{{img.fileName}}" id="file">{{img.fileName}}</a>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>

@@ -1,0 +1,95 @@
+<div class="row" ng-controller='messageBox' ng-init="getMessages()">
+			<div class="container">
+				<div class="col-md-2">
+				</div>
+				
+				<div class="col-md-8 jumbotron" id="messageBox2">
+						<button type="button" class="btn btn btn-default btn-lg" id="inbox">Inbox</button>
+						<button type="button" class="btn btn-primary pull-right btn-lg" id="compose"><a ng-href="#/compose">Compose</a></button>
+						
+						<div class="page-header" style="border-bottom-color:black;border-bottom-width:thick">
+						</div>
+						
+						<div class="row" id="myGroup">
+							<!-- FIRST COLUMN of MESSAGE BOX -->
+							<div class="col-sm-6">
+							    <button type="button" id="category" class="btn1 btn-md btn-info collapsed" data-toggle="collapse" data-target="#plumbing">Plumbing ({{plumbingMessages.length}})</button>
+							    <div id="plumbing" class="collapse" ng-repeat="message in tenantMessages | filter: { Category: 'Plumbing' } as plumbingMessages">
+                                    <div ng-click='tenantMessage(message)' ng-repeat="message in tenantMessages | filter: { Category: 'Plumbing' }">
+                                        <a ng-href='#/tenantMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+                                    </div>
+							    </div>
+							    
+							    <div><br><br></div>
+							    
+							    <button type="button" id="category" class="btn1 btn-md btn-info collapsed" data-toggle="collapse" data-target="#appliances">Appliances ({{appMessages.length}})</button>
+							    <div id="appliances" class="collapse" ng-repeat="message in tenantMessages | filter: { Category: 'Appliances' } as appMessages">
+                                    <div ng-click='tenantMessage(message)' ng-repeat="message in tenantMessages | filter: { Category: 'Appliances' }">
+                                        <a ng-href='#/tenantMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+                                    </div>
+							    </div>
+							    
+							    <div><br><br></div>
+							    
+							    <button type="button" id="category" class="btn1 btn-md btn-info collapsed" data-toggle="collapse" data-target="#flooring">Flooring ({{floorMessages.length}})</button>
+							    <div id="flooring" class="collapse" ng-repeat="message in tenantMessages | filter: { Category: 'Flooring' } as floorMessages">
+                                    <div ng-click='tenantMessage(message)' ng-repeat="message in tenantMessages | filter: { Category: 'Flooring' }">
+                                        <a ng-href='#/tenantMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+                                    </div>
+							    </div>
+							    
+							    <div><br><br></div>
+							    
+							    <button type="button" id="category" class="btn1 btn-md btn-info collapsed" data-toggle="collapse" data-target="#other">Other ({{othMessages.length}})</button>
+							    <div id="other" class="collapse" ng-repeat="message in tenantMessages | filter: { Category: 'Other' } as othMessages">
+                                    <div ng-repeat="message in tenantMessages | filter: { Category: 'Other' }">
+                                        <a ng-href='#/tenantMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+                                    </div>
+							    </div>
+
+
+							    
+						    </div>
+						    <!-- SECOND COLUMN of MESSAGE BOX -->
+						    <div class="col-sm-5">
+							    <button type="button" id="category" class="btn1 btn-md btn-info collapsed" data-toggle="collapse" data-target="#electrical">Electrical ({{elecMessages.length}})</button>
+							    <div id="electrical" class="collapse" ng-repeat="message in tenantMessages | filter: { Category: 'Electrical' } as elecMessages">
+                                    <div ng-repeat="message in tenantMessages | filter: { Category: 'Electrical' }">
+                                        <a ng-href='#/tenantMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+                                    </div>
+								</div>
+								
+								<div><br><br></div>
+							    
+							    <button type="button" id="category" class="btn1 btn-md btn-info collapsed" data-toggle="collapse" data-target="#bathroom"> Bathroom ({{bathMessages.length}}) </button>
+							    <div id="bathroom" class="collapse" ng-repeat="x in tenantMessages | filter: { Category: 'Bathroom' } as bathMessages">
+							        <div  ng-repeat="message in tenantMessages | filter: { Category: 'Bathroom' }">
+							 	    <a ng-href='#/tenantMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+							        </div>
+							    </div>
+
+							    <br><br>
+							    
+							    <button type="button" id="category" class="btn1 btn-md btn-info collapsed" data-toggle="collapse" data-target="#pestInfestation">Pest infestation ({{pestMessages.length}})</button>
+							    <div id="pestInfestation" class="collapse" ng-repeat="message in tenantMessages | filter: { Category: 'Pest' } as pestMessages">
+                                    <div ng-click='tenantMessage(message)' ng-repeat="message in tenantMessages | filter: { Category: 'Pest' }">
+                                        <a ng-href='#/tenantMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+                                    </div>
+							    </div>
+
+                                <br><br>
+
+                                <button type="button" id="category" class="btn1 btn-md btn-info collapsed" data-toggle="collapse" data-target="#payment">Payment ({{payMessages.length}})</button>
+                                <div id="payment" class="collapse" ng-repeat="message in tenantMessages | filter: { Category: 'Payment' } as payMessages">
+                                    <div ng-click='tenantMessage(message)' ng-repeat="message in tenantMessages | filter: { Category: 'Payment' }">
+                                        <a ng-href='#/tenantMessage/{{message.MessageID}}/{{message.From}}'>{{message.Subject}} {{message.Date}} {{message.Time}}</a>
+                                    </div>
+                                </div>
+
+
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>

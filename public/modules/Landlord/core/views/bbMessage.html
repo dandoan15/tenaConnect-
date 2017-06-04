@@ -1,0 +1,21 @@
+﻿<div class="container" ng-controller="bbMessCtrl" ng-init="getBBMessage()">
+	<div class="panel panel-default" id="replyBox">
+		<div ng-repeat='messageT in message'>
+			<div class="panel-heading">{{messageT.Subject}}</div>
+			<!--<div class="panel-heading">{{messageT.FName}} {{messageT.LName}} </div>-->
+			<div class="panel-body">
+			{{messageT.Message}}
+			</div>
+		</div>
+	</div>
+
+    <div class="row">
+        <textarea rows="5" cols="50" ng-model="message.reply" ng-hide="check"></textarea>
+    </div>
+
+    <div class="row">
+        <button type="button" class="btn btn-default pull-left"><a ng-href='#/'> Back </a></button>
+        <button type="button" class="btn btn-default pull-right" ng-click="deleteMessage()"> delete </button>
+    </div>
+
+    </div>

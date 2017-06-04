@@ -1,0 +1,67 @@
+﻿<div id="onePerson" ng-controller='TPInfoCtrl' ng-init='getOne()'>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-5"><h2>Total Due {{totalDue() | currency:"$"}}</h2></div>
+    </div>
+    <div class="row">
+    <div class="col-md-2"></div>
+        <div class="col-md-7">
+            <table class="payConstants" ng-repeat="info in results" contenteditable="{{edit}}">
+                <tr>
+                    <td> <b>Monthly Rent: </b> </td>
+                    <td><input ng-show="edit" ng-model="info.Rent" /><div ng-hide="edit"> {{info.Rent | currency:"$"}} </div></td>
+                </tr>
+                <tr>
+                    <td> <b>Monthly Utilities: </b> </td>
+                    <td><input ng-show="edit" ng-model="info.Utilities" /><div ng-hide="edit"> {{info.Utilities | currency:"$"}}</div></td>
+                </tr>
+                <tr>
+                    <td> <b>Monthly Late Fee: </b> </td>
+                    <td><input ng-show="edit" ng-model="info.LateFee" /><div ng-hide="edit"> {{info.LateFee | currency:"$"}}</div></td>
+                </tr>
+                <tr>
+                    <td> <b>Monthly Grace Period: </b> </td>
+                    <td><input ng-show="edit" ng-model="info.gracePeriod" /><div ng-hide="edit"> {{info.gracePeriod}} Days</div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" ng-repeat="info in results">
+            <table id="singleTbl" ng-repeat="due in info.Payment | filter:isLate" contenteditable="{{edit}}">
+                <tr>
+                    <td class="dataRow"> {{due.Description}}</td>
+                    <td class="latePayment"> {{due.Amount | currency:"$"}}</td>
+                </tr>
+                <tr>
+                    <td class="dataRow"><div> Date Due </div></td>
+                    <td class="latePayment"> {{due.dueDate | date: "MM/dd/yyyy"}} </td>
+                </tr>
+                <tr>
+                    <td class="dataRow"><div>Last Day Before Late </div></td>
+                    <td class="latePayment"> {{due.lastDay | date: "MM/dd/yyyy"}} </td>
+                </tr>
+            </table>
+            <table id="singleTbl" ng-repeat="due in info.Payment | filter:notLate" contenteditable="{{edit}}">
+                <tr>
+                    <td class="dataRow"> {{due.Description}} </td>
+                    <td class="dataRow"> {{due.Amount | currency:"$"}} </td>
+                </tr>
+                <tr>
+                    <td class="dataRow"><div> Date Due </div></td>
+                    <td class="dataRow"> {{due.dueDate | date: "MM/dd/yyyy"}} </td>
+                </tr>
+                <tr>
+                    <td class="dataRow"><div>Last Day Before Late </div></td>
+                    <td class="dataRow"> {{due.lastDay | date: "MM/dd/yyyy"}} </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>

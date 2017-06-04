@@ -1,0 +1,108 @@
+﻿<div id="onePerson" ng-controller='PInfoCtrl' ng-init='getOne()'>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-7"><h1 id="title">{{name}} </h1></div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-5"><h2>Total Due {{total | currency:"$"}}</h2></div>
+    </div>
+    <div class="row">
+    <div class="col-md-2"></div>
+        <div class="col-md-7">
+            <table class="payConstants" ng-repeat="info in results" contenteditable="{{edit}}">
+                <tr>
+                    <td> <b>Monthly Rent: </b> </td>
+                    <td><input ng-show="edit" ng-model="info.Rent" /><div ng-hide="edit"> {{info.Rent | currency:"$"}} </div></td>
+                </tr>
+                <tr>
+                    <td> <b>Monthly Utilities: </b> </td>
+                    <td><input ng-show="edit" ng-model="info.Utilities" /><div ng-hide="edit"> {{info.Utilities | currency:"$"}}</div></td>
+                </tr>
+                <tr>
+                    <td> <b>Monthly Late Fee: </b> </td>
+                    <td><input ng-show="edit" ng-model="info.LateFee" /><div ng-hide="edit"> {{info.LateFee | currency:"$"}}</div></td>
+                </tr>
+                <tr>
+                    <td> <b>Monthly Grace Period: </b> </td>
+                    <td><input ng-show="edit" ng-model="info.gracePeriod" /><div ng-hide="edit"> {{info.gracePeriod}} Days</div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 editButton"></div>
+        <div class="col-md-4"><button ng-click="edit = 'true'" ng-hide="edit">Edit</button></div>
+        <div class="col-md-6 editButton"><button type="submit" ng-click="updatePayment();" ng-show="edit">Submit</button></div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" ng-repeat="info in results">
+            <div ng-repeat="due in info.Payment | filter:isLate">
+                <table id="singleTbl">
+                    <tr>
+                        <td class="dataRow"><b> {{due.Description}} </b></td>
+                        <td class="latePayment"> {{due.Amount | currency:"$"}}</td>
+                    </tr>
+                    <tr>
+                        <td class="dataRow"><div><b> Date Due </b></div></td>
+                        <td class="latePayment"> {{due.dueDate | date: "MM/dd/yyyy"}} </td>
+                    </tr>
+                    <tr>
+                        <td class="dataRow"><div><b> Last Day Before Late </b></div></td>
+                        <td class="latePayment"> {{due.lastDay | date: "MM/dd/yyyy"}} </td>
+                    </tr>
+                </table>
+                <button class="paid" ng-click="paid(due.PaymentID)"><b> Paid </b></button><br /><br />
+            </div>
+            <div ng-repeat="due in info.Payment | filter:notLate">
+                <table id="singleTbl">
+                    <tr>
+                        <td class="dataRow"><b> {{due.Description}} </b></td>
+                        <td class="dataRow"> {{due.Amount | currency:"$"}} </td>
+                    </tr>
+                    <tr>
+                        <td class="dataRow"><div><b> Date Due </b></div></td>
+                        <td class="dataRow"> {{due.dueDate | date: "MM/dd/yyyy"}} </td>
+                    </tr>
+                    <tr>
+                        <td class="dataRow"><div><b> Last Day Before Late </b></div></td>
+                        <td class="dataRow"> {{due.lastDay | date: "MM/dd/yyyy"}} </td>
+                    </tr>
+                </table>
+                <button class="paid" ng-click="paid(due.PaymentID)"><b> Paid </b></button><br /><br />
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <table id="singleTbl" ng-show="add" contenteditable="{{add}}">
+                <tr>
+                    <td class="dataRow"><input ng-model="newPayment.Description" placeholder="Description"/></td>
+                    <td class="dataRow"><input ng-model="newPayment.Amount" placeholder="Amount"/></td>
+                </tr>
+                <tr>
+                    <td class="dataRow"><div> Date Due </div></td>
+                    <td class="dataRow"><input type="date" ng-model="newPayment.dueDate" placeholder="Due Date"/></td>
+                </tr>
+                <tr>
+                    <td class="dataRow"><div>Last Day Before Late </div></td>
+                    <td class="dataRow"><input type="date" ng-model="newPayment.lastDay" placeholder="Last Day Before Late"/></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 editButton"></div>
+        <div class="col-md-6"><button ng-hide="add" ng-click="add = 'true'">Add Payment</button></div>
+        <div class="col-md-3 editButton"><button type="submit" ng-click="addPayment();" ng-show="add">Submit</button></div>
+    </div>
+
+</div>

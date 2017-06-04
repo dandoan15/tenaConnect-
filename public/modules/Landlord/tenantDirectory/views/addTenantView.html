@@ -1,0 +1,21 @@
+﻿<div class="row" ng-controller='addTenantCtrl' ng-init="begin()"> 
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form id="form" ng-hide="done">
+            <div class="payConstants">Tenant Information</div>
+            <input class ="formText" type="text" ng-model="data.Room" name="Room" placeholder="Room Number" required><br/><br />
+            <input class ="formText" type="text" ng-model="data.FName" name="FName" placeholder="First Name" required><br /><br />
+            <input class ="formText" type="text" ng-model="data.LName" name="LName" placeholder="Last Name" required><br /><br />
+            <input class ="formText" type="text" ng-model="data.PhoneNum" name="PhoneNum" placeholder="Phone Number"><br /><br />
+            <input class ="formText" type="text" ng-model="data.Email" name="Email" placeholder="Email"><br /><br />
+            <div class="payConstants">Payment Information</div>
+            <input class="formText" type="text" ng-model="payment.Rent" name="PhoneNum" placeholder="Monthly Rent" required><br /><br />
+            <input class="formText" type="text" ng-model="payment.Utilities" name="PhoneNum" placeholder="Monthly Utilities" required><br /><br />
+            <input class="formText" type="text" ng-model="payment.LateFee" name="PhoneNum" placeholder="Late Fee" required><br /><br />
+            <input class="formText" type="text" ng-model="payment.gracePeriod" name="PhoneNum" placeholder="Grace Period" required><br /><br /><br />
+            <button id="add" type="submit" ng-click="addNew()">Add</button>
+        </form>
+        <h1 ng-show="done">Added Successfully!</h1>
+    </div>
+    <div class="col-md-4"></div>
+</div>

@@ -1,0 +1,34 @@
+﻿<div id="onePerson" ng-controller='TenantCtrl' ng-init='getOne()'>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <table id="tInfoTbl" ng-repeat="info in results" contenteditable="{{edit}}">
+                <tr>
+                    <th class="tInfoName"><input ng-show="edit" ng-model="info.FName"/><div ng-hide="edit"> {{info.FName}} </div></th>
+                    <th class="tInfoName"><input ng-show="edit" ng-model="info.LName" /><div ng-hide="edit"> {{info.LName}} </div></th>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <table id="tInfoTbl" ng-repeat="info in results" contenteditable="{{edit}}">
+                <tr>
+                    <td class="tInfo"><input ng-show="edit" ng-model="info.PhoneNum" /><div ng-hide="edit"> {{info.PhoneNum}} </div></td>
+                </tr>
+                <tr>
+                    <td class="tInfo"><input ng-show="edit" ng-model="info.Email" /><div ng-hide="edit"> {{info.Email}} </div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 editButton"></div>
+        <div class="col-md-6"><button ng-click="edit = 'true'" ng-hide="edit">Edit</button></div>
+        <div class="col-md-3 editButton"><button type="submit" ng-click="updateTenant()" ng-show="edit">Submit</button></div>
+    </div>
+    
+</div>

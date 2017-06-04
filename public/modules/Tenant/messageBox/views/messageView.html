@@ -1,0 +1,40 @@
+﻿<div class="container" ng-controller="tenantMessage" ng-init= "getTenantMessage()">
+	<div class="panel panel-default" id="replyBox">
+		<div ng-repeat='messageT in message'>
+			<div class="panel-heading">{{messageT.Subject}}</div>
+			<!--<div class="panel-heading">{{messageT.FName}} {{messageT.LName}} </div>-->
+			
+			<div class="panel-body">
+			{{messageT.Reply}}
+			</div>
+
+			<div class="panel-body">
+			{{messageT.Message}}
+			</div>
+
+		</div>
+	</div>
+
+
+    <div class="row">
+        <textarea rows="5" cols="50" ng-model="message.reply" ng-hide="toggleButton"></textarea>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default pull-left"><a ng-href='#/messageBox'> Back </a></button>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default delbtn" ng-click="deleteMessage()"> Delete </button>
+        </div>
+        <div class="col-md-4">
+            <div ng-hide='check'>
+                <button type="button" class="btn btn-default pull-right"><a ng-click='replyMessage()'> Sent </a></button>
+            </div>
+            <div ng-show='check'>
+                <button type="button" class="btn btn-default pull-right" ng-click='buttonToggle()'> Reply </button>
+            </div>
+        </div>
+    </div>
+
+</div>

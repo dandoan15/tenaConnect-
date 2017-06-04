@@ -1,0 +1,27 @@
+﻿<div id="tenantList" ng-controller='AccountCtrl' ng-init='getAll()'>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6"><h1> Accounts {{numAccounts}} of {{totAccounts}} </h1></div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <table id="tenantTbl">
+                <tr><th class="acRowHeading">Account Number</th><th class="acRowHeading">Room</th><th class="acRowHeading">Name</th></tr>
+                <tr ng-repeat="tenant in results">
+                    <td class="dataRow"> {{$index + 1}} </td>
+                    <td class="dataRow querySpecific"><a ng-href="#/listTenants/{{tenant.TenantID}}"> {{tenant.Room}} </a></td>
+                    <td class="dataRow querySpecific"><a ng-href="#/listTenants/{{tenant.TenantID}}"> {{tenant.FName}} {{tenant.LName}} </a></td>
+                    <td id="tblBtn"><input type="button" id="delAcButton" ng-click="delAccount('{{tenant.TenantID}}')" value="Delete Account" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7"><button type="submit" ng-click="add()">Add Account</button></div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
